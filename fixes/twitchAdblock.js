@@ -77,7 +77,11 @@ twitch-videoad.js text/javascript
                 super(URL.createObjectURL(new Blob([newBlobStr])), options);
                 twitchWorkers.push(this);
                 this.onmessage = function(e) {
-                    if (e.data.key == 'HideAdBlockBanner') {
+                    if (e.data.key == 'ShowAdBlockBanner') {
+                        if (adBlockDiv == null) {
+                            adBlockDiv = getAdBlockDiv();
+                        }
+                    } else if (e.data.key == 'HideAdBlockBanner') {
                         if (adBlockDiv == null) {
                             adBlockDiv = getAdBlockDiv();
                         }
